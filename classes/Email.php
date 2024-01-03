@@ -24,14 +24,14 @@ class Email
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
+        $mail->Host       = 'smtp-relay.brevo.com';
         $mail->SMTPAuth   = true;
-        $mail->Port = 2525;                             //Enable SMTP authentication
-        $mail->Username   = '37e6ed82e63aa5';                     //SMTP username
-        $mail->Password   = '1fb71fb02267dd';                               //SMTP password
+        $mail->Port = 587;
+        $mail->Username   = 'aspermasterone@gmail.com';
+        $mail->Password   = 'c3P18zZ4NVIbrhJv';
 
         $mail->setFrom('cuentas@peluqueria.com');
-        $mail->addAddress('cuentas@peluqueria.com', 'Peluqueria.com');
+        $mail->addAddress($this->email);
         $mail->Subject = 'Confirma tu cuenta';
 
         // Set HTML
@@ -40,7 +40,7 @@ class Email
 
         $contenido = '<html>';
         $contenido .= "<p><strong>Hola " . $this->email .  "</strong> Has Creado tu cuenta en App Salón, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://warm-castle-46105.herokuapp.com/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
+        $contenido .= "<p>Presiona aquí: <a href='https://barberiafranco.alwaysdata.net/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
@@ -55,14 +55,14 @@ class Email
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
+        $mail->Host       = 'smtp-relay.brevo.com';
         $mail->SMTPAuth   = true;
-        $mail->Port = 2525;                             //Enable SMTP authentication
-        $mail->Username   = '37e6ed82e63aa5';                     //SMTP username
-        $mail->Password   = '1fb71fb02267dd';                               //SMTP password
+        $mail->Port = 587;
+        $mail->Username   = 'aspermasterone@gmail.com';
+        $mail->Password   = 'c3P18zZ4NVIbrhJv';
 
         $mail->setFrom('cuentas@peluqueria.com');
-        $mail->addAddress('cuentas@peluqueria.com', 'Peluqueria.com');
+        $mail->addAddress($this->email);
         $mail->Subject = 'Reestablece tu password';
 
         // Set HTML
@@ -71,7 +71,7 @@ class Email
 
         $contenido = '<html>';
         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='https://warm-castle-46105.herokuapp.com/recuperar?token=" . $this->token . "'>Reestablecer Password</a>";
+        $contenido .= "<p>Presiona aquí: <a href='https://barberiafranco.alwaysdata.net/recuperar?token=" . $this->token . "'>Reestablecer Password</a>";
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
