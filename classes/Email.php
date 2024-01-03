@@ -31,7 +31,7 @@ class Email
         $mail->Password   = 'c3P18zZ4NVIbrhJv';
 
         $mail->setFrom('cuentas@peluqueria.com');
-        $mail->addAddress($this->email);
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Confirma tu cuenta';
 
         // Set HTML
@@ -62,7 +62,7 @@ class Email
         $mail->Password   = 'c3P18zZ4NVIbrhJv';
 
         $mail->setFrom('cuentas@peluqueria.com');
-        $mail->addAddress($this->email);
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Reestablece tu password';
 
         // Set HTML
