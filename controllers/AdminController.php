@@ -1,20 +1,24 @@
-<?php 
+<?php
 
 namespace Controllers;
 
 use Model\AdminCita;
 use MVC\Router;
 
-class AdminController {
-    public static function index( Router $router ) {
-        session_start();
+class AdminController
+{
+    public static function index(Router $router)
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
         isAdmin();
 
         $fecha = $_GET['fecha'] ?? date('Y-m-d');
         $fechas = explode('-', $fecha);
 
-        if( !checkdate( $fechas[1], $fechas[2], $fechas[0]) ) {
+        if (!checkdate($fechas[1], $fechas[2], $fechas[0])) {
             header('Location: /404');
         }
 
@@ -34,7 +38,7 @@ class AdminController {
 
         $router->render('admin/index', [
             'nombre' => $_SESSION['nombre'],
-            'citas' => $citas, 
+            'citas' => $citas,
             'fecha' => $fecha
         ]);
     }
