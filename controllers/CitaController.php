@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+Use Model\Hora;
 use MVC\Router;
 
 class CitaController
@@ -14,10 +15,12 @@ class CitaController
         }
 
         isAuth();
+        $horas  = Hora::all();
 
         $router->render('cita/index', [
             'nombre' => $_SESSION['nombre'],
-            'id' => $_SESSION['id']
+            'id' => $_SESSION['id'],
+            'horas' => $horas
         ]);
     }
 }
