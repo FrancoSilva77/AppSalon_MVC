@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once __DIR__ . '/../includes/app.php';
 
@@ -8,6 +8,7 @@ use Controllers\CitaController;
 use Controllers\LoginController;
 use Controllers\ServicioController;
 use MVC\Router;
+
 $router = new Router();
 
 // Iniciar Sesión
