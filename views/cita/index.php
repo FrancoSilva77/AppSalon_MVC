@@ -1,8 +1,8 @@
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige tus servicios y coloca tus datos</p>
 
-<?php 
-    include_once __DIR__ . '/../templates/barra.php';
+<?php
+include_once __DIR__ . '/../templates/barra.php';
 ?>
 
 <div id="app">
@@ -24,32 +24,26 @@
         <form class="formulario">
             <div class="campo">
                 <label for="nombre">Nombre</label>
-                <input
-                    id="nombre"
-                    type="text"
-                    placeholder="Tu Nombre"
-                    value="<?php echo $nombre; ?>"
-                    disabled
-                />
+                <input id="nombre" type="text" placeholder="Tu Nombre" value="<?php echo $nombre; ?>" disabled />
             </div>
 
             <div class="campo">
                 <label for="fecha">Fecha</label>
-                <input
-                    id="fecha"
-                    type="date"
-                    min="<?php echo date('Y-m-d', strtotime('+1 day') ); ?>"
-                />
+                <input id="fecha" name="fecha" type="date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" />
             </div>
 
-            <div class="campo">
-                <label for="hora">Hora</label>
-                <input
-                    id="hora"
-                    type="time"
-                />
+            <div class="campo-horas">
+                <label for="horas">Hora:</label>
+
+                <ul class="horas" id="horas">
+                    <?php foreach ($horas as $hora) : ?>
+                        <li class="hora hora--desabilitada" data-hora-id="<?php echo $hora->id; ?>"><?php echo $hora->hora; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+
+                <input type="hidden" name="horaId" value="<?php echo $hora->id ?>">
             </div>
-            <input type="hidden" id="id" value="<?php echo $id; ?>" >
+            <input type="hidden" id="id" value="<?php echo $id; ?>">
 
         </form>
     </div>
@@ -59,21 +53,16 @@
     </div>
 
     <div class="paginacion">
-        <button 
-            id="anterior"
-            class="boton"
-        >&laquo; Anterior</button>
+        <button id="anterior" class="boton">&laquo; Anterior</button>
 
-        <button 
-            id="siguiente"
-            class="boton"
-        >Siguiente &raquo;</button>
+        <button id="siguiente" class="boton">Siguiente &raquo;</button>
     </div>
 </div>
 
-<?php 
-    $script = "
+<?php
+$script = "
         <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         <script src='build/js/app.js'></script>
+        <script src='build/js/horas.js'></script>
     ";
 ?>
